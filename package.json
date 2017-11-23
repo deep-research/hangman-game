@@ -1,0 +1,15 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "homework 9",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^4.0.0",
+    "random-int": "^1.0.0"
+  }
+}
