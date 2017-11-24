@@ -13,7 +13,7 @@ var playGame = function() {
     wordObj.chooseWord()
 
     // Make a guess
-    inquirerFunction()
+    inquirerFunction(wordObj)
 }
 
 // Start the game

@@ -63,7 +63,8 @@ var Word = function() {
         for (i=0; i<this.letterObjs.length; i++) {
             letterArray.push(this.letterObjs[i].display())
         }
-        return letterArray.join(" ")
+        console.log(letterArray.join(" "))
+        console.log("")
     }
 }
 

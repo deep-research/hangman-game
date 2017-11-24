@@ -1,7 +1,7 @@
 var inquirer = require("inquirer");
 
-var count = 8;
-var inquirerFunction = function() {
+var count = 10;
+var inquirerFunction = function(wordObj) {
     if (count > 0) {
         inquirer.prompt([
             {
@@ -18,21 +18,22 @@ var inquirerFunction = function() {
         ]).then(answers => {
             // Retrieve the player's guess
             var theLetter = answers.letterInput
-            console.log(theLetter)
 
-            var guessesLeft = count -1
+            var guessesLeft = count - 1
             if (guessesLeft)
             console.log("Guesses left: " + guessesLeft)
 
             // see if they've uncovered a new letter
-            // for (i=0; i<this.letterObjs.length; i++) {
-            //     if (this.letterObjs[i].value === theLetter) {
-            //         this.letterObjs[i].guessedStatus = true
+            // for (i=0; i<wordObj.letterObjs.length; i++) {
+            //     if (wordObj.letterObjs[i].value === theLetter) {
+            //         wordObj.letterObjs[i].guessedStatus = true
             //     }
-            // } 
+            // }
+
+            wordObj.printLetters()
 
             count--
-            inquirerFunction()
+            inquirerFunction(wordObj)
         })
     }
 }
