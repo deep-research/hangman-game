@@ -1,15 +1,19 @@
-var inquirer = require("inquirer");
-var randomInt = require("random-int");
+// import the inquirer function
+var inquirerFunction = require("./inquirerFunction.js");
+
+// import the word constructor
 var wordConstructor = require("./word-constructor.js")
 
 // One game cycle
 var playGame = function() {
-    // Access the Word constructor
+    // New word object
     var wordObj = new wordConstructor()
+
     // Choose a new word
     wordObj.chooseWord()
-    console.log(wordObj.chosenWord)
-    console.log(wordObj.printLetters())
+
+    // Make a guess
+    inquirerFunction()
 }
 
 // Start the game
