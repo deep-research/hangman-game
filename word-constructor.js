@@ -1,4 +1,5 @@
 var randomInt = require('random-int');
+
 // Import the Letter constructor
 var letterConstructor = require('./letter-constructor.js')
 
@@ -40,16 +41,29 @@ var Word = function() {
             this.letterObjs.push(letterObj)
         }
     };
+
+    // update the game status
     this.checkGameStatus = function() {
-        var letterCount = 0
-        for (i=0; i<letterConstructor.length; i++) {
-            var letterObj = letterConstructor[i]
+        var letterCount = 0;
+
+        // add to the count for every letter that has been guessed
+        for (i=0; i<letterObjs.length; i++) {
+            var letterObj = letterObjs[i]
             if (letterObj.guessedStatus) {
                 letterCount++
             }
-        if (letterObj.lenth > 0 && letterCount === letterObjs.length)
-            this.guessedStatus = true;
+
+        // if all the letters were guessed, update the game status to true
+        if (letterCount === letterObjs.length)
+            this.gameStatus = true;
         }
+    }
+    this.printLetters = function() {
+        letterArray = []
+        for (i=0; i<this.letterObjs.length; i++) {
+            letterArray.push(this.letterObjs[i].display())
+        }
+        return letterArray.join(" ")
     }
 }
 

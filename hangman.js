@@ -9,6 +9,7 @@ var playGame = function() {
     // Choose a new word
     wordObj.chooseWord()
     console.log(wordObj.chosenWord)
+    console.log(wordObj.printLetters())
 }
 
 // Start the game
