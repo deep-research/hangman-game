@@ -6,7 +6,7 @@ var letterConstructor = require('./letter-constructor.js')
 var Word = function() {
 
     // array of possible word choices
-    this.wordList = ["apple", "pineapple", "pear", "bannana", "watermelon", "orange", "tangerine"];
+    this.wordList = ["apple", "pineapple", "pear", "bannana", "watermelon", "orange", "tangerine", "kiwi", "coconut"];
 
     // the word that has been chosen
     this.chosenWord = "";
@@ -22,13 +22,20 @@ var Word = function() {
 
         // Update the word as the chosen word
         this.chosenWord = newWord;
-        
+
+        // Generate an array with the letters in the word
         var letterArray = this.chosenWord.split("")
+
+        // For each letter in the letter array
         for (i=0; i<letterArray.length; i++) {
-            letterObj = new letterConstructor(letterArray[i].toLowerCase(), i)
+            // convert to lowercase and create an object
+            letterObj = new letterConstructor(letterArray[i].toLowerCase())
+
+            // save to an array of letter objects
             this.letterObjs.push(letterObj)
         }
     }
 }
 
+// Export the constructor to the hangman.js file
 module.exports = Word;
