@@ -15,9 +15,6 @@ var Word = function() {
     // The letters in the word as an array of objects
     this.letterObjs = [];
 
-    // The game status is true when the player has won
-    this.gameStatus = false;
-
     // choose a new word
     this.chooseWord = function() {
         // generate an indexnnumber between zero and the length of wordList - 1
@@ -25,9 +22,10 @@ var Word = function() {
 
         // retrieve the word by index number from the wordList array
         var newWord = this.wordList[randInt];
+        console.log("New word: " + newWord + "\n")
 
         // Update the word as the chosen word
-        this.chosenWord = newWord;
+        this.chosenWord = newWord;     
 
         // Generate an array with the letters in the word
         var letterArray = this.chosenWord.split("")
@@ -43,28 +41,36 @@ var Word = function() {
     };
 
     // update the game status
-    this.checkGameStatus = function() {
+    this.gameStatus = function() {
         var letterCount = 0;
 
         // add to the count for every letter that has been guessed
-        for (i=0; i<letterObjs.length; i++) {
-            var letterObj = letterObjs[i]
+        for (i=0; i<this.letterObjs.length; i++) {
+            var letterObj = this.letterObjs[i]
             if (letterObj.guessedStatus) {
-                letterCount++
+                letterCount++;
             }
+        }
 
         // if all the letters were guessed, update the game status to true
-        if (letterCount === letterObjs.length)
-            this.gameStatus = true;
+        if (letterCount === this.letterObjs.length) {
+            return true;
         }
     }
+
     this.printLetters = function() {
         letterArray = []
         for (i=0; i<this.letterObjs.length; i++) {
             letterArray.push(this.letterObjs[i].display())
         }
-        console.log(letterArray.join(" "))
-        console.log("")
+        console.log(letterArray.join(" ") + "\n")
+    }
+
+    this.reset = function(){
+        this.chosenWord = "";
+        this.letterObjs = [];
+
+        this.chooseWord()
     }
 }
 
