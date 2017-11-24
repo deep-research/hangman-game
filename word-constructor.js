@@ -10,7 +10,12 @@ var Word = function() {
 
     // the word that has been chosen
     this.chosenWord = "";
+
+    // The letters in the word as an array of objects
     this.letterObjs = [];
+
+    // The game status is true when the player has won
+    this.gameStatus = false;
 
     // choose a new word
     this.chooseWord = function() {
@@ -33,6 +38,17 @@ var Word = function() {
 
             // save to an array of letter objects
             this.letterObjs.push(letterObj)
+        }
+    };
+    this.checkGameStatus = function() {
+        var letterCount = 0
+        for (i=0; i<letterConstructor.length; i++) {
+            var letterObj = letterConstructor[i]
+            if (letterObj.guessedStatus) {
+                letterCount++
+            }
+        if (letterObj.lenth > 0 && letterCount === letterObjs.length)
+            this.guessedStatus = true;
         }
     }
 }
