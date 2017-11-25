@@ -1,7 +1,7 @@
 var randomInt = require('random-int');
 
 // Import the Letter constructor
-var letterConstructor = require('./letter-constructor.js')
+var letterConstructor = require('./letter-constructor')
 
 // the word constructor
 var Word = function() {
@@ -57,6 +57,7 @@ var Word = function() {
         }
     }
 
+    // Display the latest version of the word
     this.printLetters = function() {
         letterArray = []
         for (i=0; i<this.letterObjs.length; i++) {
@@ -65,6 +66,7 @@ var Word = function() {
         console.log(letterArray.join(" ") + "\n")
     }
 
+    // Reset the object and choose a new word
     this.reset = function(){
         this.chosenWord = "";
         this.letterObjs = [];
