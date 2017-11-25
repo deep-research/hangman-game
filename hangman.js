@@ -1,5 +1,5 @@
 // import the inquirer function
-var inquirerFunction = require("./inquirerFunction.js");
+var letterPrompt = require("./letterPrompt.js");
 
 // import the word constructor
 var wordConstructor = require("./word-constructor.js")
@@ -13,7 +13,8 @@ var playGame = function() {
     wordObj.chooseWord()
 
     // Make a guess
-    inquirerFunction(wordObj)
+    console.log("")
+    letterPrompt(wordObj)
 }
 
 // Start the game

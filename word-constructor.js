@@ -22,7 +22,6 @@ var Word = function() {
 
         // retrieve the word by index number from the wordList array
         var newWord = this.wordList[randInt];
-        console.log("New word: " + newWord + "\n")
 
         // Update the word as the chosen word
         this.chosenWord = newWord;     

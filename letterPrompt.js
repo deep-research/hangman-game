@@ -1,7 +1,28 @@
 var inquirer = require("inquirer");
 
-var count = 10;
-var inquirerFunction = function(wordObj) {
+var countReset = 10;
+var count = countReset;
+
+var playAgain = function(wordObj) {
+    inquirer.prompt([
+        {
+            type: "confirm",
+            message: "Would you like to play again?",
+            name: "playAgain"
+        }
+    ]).then(answers => {
+        if (answers.playAgain) {
+            wordObj.reset()
+            count = countReset;
+            console.log("\nA new word has been chosen!\n")
+            letterPrompt(wordObj)
+        } else {
+            process.exit()
+        }
+    })
+}
+
+var letterPrompt = function(wordObj) {
     if (count > 0) {
         inquirer.prompt([
             {
@@ -40,18 +61,20 @@ var inquirerFunction = function(wordObj) {
 
             if (letterFound) {
                 if (wordObj.gameStatus()) {
-                    console.log("You got it right! Next word!\n")
+                    count = 0;
+                    console.log("You got it right! Nice job!\n")
 
                     // Reset the game
-                    wordObj.reset()
-                    count = 10;
+                    playAgain(wordObj)
+
                 } else {
                     console.log("CORRECT!!!\n")
                 }
             } else {                
                 count--
                 if (count === 0) {
-                    console.log("You loose")
+                    console.log("You lost. Better luck next time!\n")
+                    playAgain(wordObj)
                 } else if (count === 1) {
                     console.log("INCORRECT!!!\n")
                     console.log(count + " guess remaining!!!\n")
@@ -61,9 +84,9 @@ var inquirerFunction = function(wordObj) {
                 }
             }
 
-            inquirerFunction(wordObj)
+            letterPrompt(wordObj)
         })
     }
 }
 
-module.exports = inquirerFunction;
+module.exports = letterPrompt;
