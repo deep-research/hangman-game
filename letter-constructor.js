@@ -1,5 +1,6 @@
 // The Letter constructor
 var Letter = function(letter) {
+    
     // The letter value
     this.value = letter;
 

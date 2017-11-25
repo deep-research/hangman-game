@@ -13,8 +13,10 @@ var playAgain = function(wordObj) {
             name: "playAgain"
         }
     ]).then(answers => {
+        
         // If they want to play
         if (answers.playAgain) {
+
             // Reset the word object
             wordObj.reset()
 
@@ -25,6 +27,7 @@ var playAgain = function(wordObj) {
 
             // Start the next game
             letterPrompt(wordObj)
+
         } else {
             // Exit the program
             process.exit()
@@ -49,6 +52,7 @@ var letterPrompt = function(wordObj) {
                 }     
             }
         ]).then(answers => {
+
             // Retrieve the player's guess
             var theLetter = answers.letterInput
 
@@ -75,8 +79,10 @@ var letterPrompt = function(wordObj) {
 
             // If they guessed correctly
             if (letterFound) {
+
                 // If they guessed the whole word
                 if (wordObj.gameStatus()) {
+
                     // Make sure the game will stop
                     count = 0;
 
@@ -90,6 +96,7 @@ var letterPrompt = function(wordObj) {
                 }
             // If they guessed incorrectly
             } else {
+
                 // Reduce the counter by one turn
                 count--
 
@@ -104,6 +111,7 @@ var letterPrompt = function(wordObj) {
                 } else if (count === 1) {
                     console.log("INCORRECT!!!\n")
                     console.log(count + " guess remaining!!!\n")
+
                 } else {
                     console.log("INCORRECT!!!\n")
                     console.log(count + " guesses remaining!!!\n")

@@ -17,6 +17,7 @@ var Word = function() {
 
     // choose a new word
     this.chooseWord = function() {
+
         // generate an indexnnumber between zero and the length of wordList - 1
         var randInt = randomInt(this.wordList.length - 1);
 
@@ -31,6 +32,7 @@ var Word = function() {
 
         // For each letter in the letter array
         for (i=0; i<letterArray.length; i++) {
+            
             // convert to lowercase and create an object
             letterObj = new letterConstructor(letterArray[i].toLowerCase())
 
