@@ -5,8 +5,6 @@ A marvellous Node.js version of the classic hangman game.
 ### Prerequisites
 
 * An updated Node.js installation.
-* The Inquirer NPM package.
-* The Random-int NPM package.
 * A command-line interpreter.
 
 ### Installation
