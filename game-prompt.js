@@ -52,9 +52,8 @@ var letterPrompt = function(wordObj) {
                 }     
             }
         ]).then(answers => {
-
-            // Retrieve the player's guess
-            var theLetter = answers.letterInput
+            // Retrieve the player's guess and convert to lower case
+            var theLetter = answers.letterInput.toLowerCase();
 
             // letterFound determines when a new letter has been guessed
             var letterFound = false;
@@ -69,16 +68,20 @@ var letterPrompt = function(wordObj) {
                     // change the guessed status to true
                     wordObj.letterObjs[i].guessedStatus = true;
 
+                    // And display the letter instead of an underscore
+                    wordObj.letterObjs[i].display = wordObj.letterObjs[i].value;
+
                     // update the letter found status
                     letterFound = true;
                 }
             }
 
-            // Display the latest version of the word
-            wordObj.printLetters()
-
             // If they guessed correctly
             if (letterFound) {
+                console.log("")
+                
+                // Display the latest version of the word
+                wordObj.printLetters()
 
                 // If they guessed the whole word
                 if (wordObj.gameStatus()) {
@@ -102,18 +105,18 @@ var letterPrompt = function(wordObj) {
 
                 // If it was their last try
                 if (count === 0) {
-                    console.log("You lost. Better luck next time!\n")
+                    console.log("\nYou lost. Better luck next time!\n")
 
                     // Prompt to restart the game
                     playAgain(wordObj)
 
                 // Say how many guesses are left if the game is still going
                 } else if (count === 1) {
-                    console.log("INCORRECT!!!\n")
+                    console.log("\nINCORRECT!!!\n")
                     console.log(count + " guess remaining!!!\n")
 
                 } else {
-                    console.log("INCORRECT!!!\n")
+                    console.log("\nINCORRECT!!!\n")
                     console.log(count + " guesses remaining!!!\n")
                 }
             }

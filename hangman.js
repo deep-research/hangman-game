@@ -13,8 +13,6 @@ var playGame = function() {
     // Choose a new word
     wordObj.chooseWord()
 
-    console.log("")
-
     // Make a guess
     letterPrompt(wordObj)
 }

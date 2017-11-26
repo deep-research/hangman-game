@@ -6,7 +6,10 @@ var letterConstructor = require('./letter-constructor')
 // the word constructor
 var Word = function() {
     // Array of possible word choices
-    this.wordList = ["apple", "pineapple", "pear", "bannana", "watermelon", "orange", "tangerine", "kiwi", "coconut"];
+    this.wordList = ["apple", "pineapple", "pear", "bannana", "watermelon",
+                     "orange", "tangerine", "kiwi", "coconut", "papaya",
+                     "cantelope", "strawberry", "lemon", "lime", "blueberry",
+                     "raspberry", "grapefruit", "pomegranate"];
 
     // the word that has been chosen
     this.chosenWord = "";
@@ -24,7 +27,7 @@ Word.prototype.chooseWord = function() {
     var newWord = this.wordList[randInt];
 
     // Update the word as the chosen word
-    this.chosenWord = newWord;     
+    this.chosenWord = newWord;  
 
     // Generate an array with the letters in the word
     var letterArray = this.chosenWord.split("")
@@ -32,8 +35,8 @@ Word.prototype.chooseWord = function() {
     // For each letter in the letter array
     for (i=0; i<letterArray.length; i++) {
 
-        // convert to lowercase and create an object
-        letterObj = new letterConstructor(letterArray[i].toLowerCase())
+        // Create a letter object
+        var letterObj = new letterConstructor(letterArray[i])
 
         // save to an array of letter objects
         this.letterObjs.push(letterObj)
@@ -60,13 +63,14 @@ Word.prototype.gameStatus = function() {
         
 // Display the latest version of the word
 Word.prototype.printLetters = function() {
-    letterArray = []
+    var letterArray = [];
     for (i=0; i<this.letterObjs.length; i++) {
-        letterArray.push(this.letterObjs[i].display())
+        letterArray.push(this.letterObjs[i].display)
     }
+
     console.log(letterArray.join(" ") + "\n")
 }
-        
+
 // Reset the object and choose a new word
 Word.prototype.reset = function(){
     this.chosenWord = "";
