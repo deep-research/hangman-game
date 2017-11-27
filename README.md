@@ -1,6 +1,7 @@
 # Hangman Game
 
-A marvellous Node.js version of the classic hangman game.
+A marvellous Node.js version of the classic hangman game.  
+https://en.wikipedia.org/wiki/Hangman_(game)
 
 ### Prerequisites
 
